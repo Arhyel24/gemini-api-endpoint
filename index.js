@@ -119,6 +119,9 @@ app.post("/api/chat", async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+// app.listen(PORT, () => {
+//   console.log(`Server is running on port ${PORT}`);
+// });
+
+// Export the Express app as a serverless function
+export default app;
