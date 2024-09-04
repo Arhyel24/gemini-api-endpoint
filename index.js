@@ -57,7 +57,7 @@ app.use(
 );
 
 app.use((req, res, next) => {
-  console.log("hit 1");
+  // console.log("hit 1");
   res.header("Access-Control-Allow-Origin", "*");
   next();
 });
