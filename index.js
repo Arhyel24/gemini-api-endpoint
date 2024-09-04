@@ -1,26 +1,75 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const axios = require("axios");
-const { GoogleGenerativeAI } = require("@google/generative-ai");
-require("dotenv").config();
+import express from "express";
+import bodyParser from "body-parser";
+import axios from "axios";
+// const { mime } = require("mime");
+import { Mime } from "mime";
+import { GoogleGenerativeAI } from "@google/generative-ai";
+import dotenv from "dotenv";
+import path from "path";
 
-// const OpenAI = require("openai");
+// Load the environment variables
+dotenv.config();
 
 // const { OpenAI } = require("openai"); // Assuming this is the package you are using
 
-const cors = require("cors");
+import cors from "cors";
+import { fileURLToPath } from "url";
+
+// Convert `import.meta.url` to a file path
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
+
+const customMime = new Mime();
+
+// Define custom MIME types
+customMime.define(
+  {
+    "text/css": ["css"],
+    "application/javascript": ["js"],
+    "image/png": ["png"],
+    "image/jpeg": ["jpg", "jpeg"],
+    "image/gif": ["gif"],
+  },
+  true
+);
+
 app.use(cors()); // Enable CORS for all routes
+
 const PORT = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
+
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_KEY);
+
+// Middleware to serve static files from the 'public' folder
+app.use(
+  express.static(path.join(__dirname, "public"), {
+    setHeaders: (res, filePath) => {
+      // Set the correct MIME type using the custom Mime instance
+      const type = customMime.getType(filePath);
+      if (type) {
+        res.setHeader("Content-Type", type);
+      }
+    },
+  })
+);
+
+app.use((req, res, next) => {
+  console.log("hit 1");
+  res.header("Access-Control-Allow-Origin", "*");
+  next();
+});
+
+app.get("/", async (req, res) => {
+  res.sendFile(`${__dirname}/public/index.html`);
+});
 
 // Endpoint for the chatbot API
 app.post("/api/chat", async (req, res) => {
   const userMessage = req.body.message;
-  console.log(userMessage);
+  // console.log(userMessage);
 
   if (!userMessage) {
     return res.status(400).json({ error: "Message is required" });
@@ -51,7 +100,7 @@ app.post("/api/chat", async (req, res) => {
     const model = genAI.getGenerativeModel({
       model: "gemini-1.5-flash",
       systemInstruction:
-        "You are a professional developer. Your name is Shadow.",
+        "You are a professional web developer. Your name is Shadow.",
     });
 
     const result = await model.generateContent(userMessage);
@@ -61,7 +110,7 @@ app.post("/api/chat", async (req, res) => {
     // const botResponse = openAIResponse.data.choices[0].text.trim();
     const response = await result.response;
     const text = response.text();
-    console.log(`Ai responded`);
+    // console.log(`Ai responded`);
 
     return res.json({ response: text });
   } catch (error) {

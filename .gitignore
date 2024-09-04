@@ -1,0 +1,42 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.env
+.DS_Store
+
+# Optional: Logs
+logs
+*.log
+logs/**/*.log
+
+# Optional: Directory for temporary files
+tmp/
+temp/
+
+# Optional: Dependency directories for other package managers
+jspm_packages/
+
+# Optional: TypeScript
+dist/
+*.tsbuildinfo
+
+# Optional: Build directories
+build/
+coverage/
+.out/
+.cache/
+
+# Optional: IDE specific files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# Optional: OS generated files
+Thumbs.db
