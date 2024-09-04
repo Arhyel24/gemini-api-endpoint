@@ -4,21 +4,37 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Duet</title>
+    <link rel="stylesheet" href="/css/cut.css" />
     <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   </head>
   <body>
     <div class="chat-container">
-      <div class="chat-box" id="chat-box">
+      <div class="mesgs" >
+        <div class="msg_history" id="chat-box">
+          
+        </div>
+        <div class="type_msg">
+          <div class="input_msg_write">
+            <input type="text" class="write_msg" id="user-input" placeholder="Type a message" />
+            <button class="msg_send_btn" type="button" id="send-button"><i class="fa fa-paper-plane-o fa-sm" aria-hidden="true"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+      
+      <!-- <div class="chat-box" id="chat-box"> -->
         <!-- Chat messages will appear here -->
-      </div>
-      <div class="input-box">
-        <input
-          type="text"
-          id="user-input"
-          placeholder="Type your message here..."
-        />
-        <button id="send-button">Send</button>
-      </div>
+      <!-- </div> -->
+      <!-- <div class="input-box"> -->
+        <!-- <input -->
+          <!-- type="text" -->
+          <!-- id="user-input" -->
+          <!-- placeholder="Type your message here..." -->
+        <!-- /> -->
+        <!-- <button id="send-button">Send</button> -->
+      <!-- </div> -->
     </div>
     <script src="/js/main.js"></script>
   </body>
