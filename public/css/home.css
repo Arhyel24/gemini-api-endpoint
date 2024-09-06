@@ -1,0 +1,227 @@
+.container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+.section {
+  text-align: center;
+  margin-bottom: 50px;
+}
+.section h1 {
+  font-size: 4em;
+  color: rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: -1;
+}
+.section h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+.section p {
+  font-size: 1em;
+  color: #666;
+  margin-bottom: 20px;
+}
+.btn {
+  background-color: #00cba9;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 1em;
+}
+.services .icons {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.services .icon {
+  width: 150px;
+  text-align: center;
+  margin: 20px 0;
+}
+.services .icon i {
+  font-size: 3em;
+  color: #00cba9;
+  margin-bottom: 10px;
+}
+.compatibility .content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.compatibility .content img {
+  max-width: 100%;
+  height: auto;
+}
+.testimonials .testimonial {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.testimonials .testimonial img {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  margin-bottom: 10px;
+}
+.faqs .faq {
+  text-align: left;
+  margin-bottom: 20px;
+}
+.faqs .faq h3 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+.faqs .faq p {
+  font-size: 1em;
+  color: #666;
+}
+.faqs .faq img {
+  max-width: 100%;
+  height: auto;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f8ff;
+  color: #333;
+}
+header {
+  background-color: #e0f7fa;
+  padding: 20px;
+  text-align: center;
+}
+header .logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #00bcd4;
+}
+header .nav {
+  margin-top: 10px;
+}
+header .nav a {
+  margin: 0 10px;
+  color: #333;
+  text-decoration: none;
+}
+header .social-icons {
+  margin-top: 10px;
+}
+header .social-icons a {
+  margin: 0 5px;
+  color: #333;
+}
+.hero {
+  text-align: center;
+  padding: 50px 20px;
+  background-color: #e0f7fa;
+}
+.hero h1 {
+  font-size: 36px;
+  color: #00bcd4;
+}
+.hero p {
+  font-size: 18px;
+  color: #333;
+}
+.hero .cta-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #00bcd4;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.service-process {
+  text-align: center;
+  padding: 50px 20px;
+}
+.service-process h2 {
+  font-size: 24px;
+  color: #00bcd4;
+}
+.service-process .steps {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px;
+}
+.service-process .step {
+  width: 20%;
+  text-align: center;
+}
+.service-process .step h3 {
+  font-size: 20px;
+  color: #00bcd4;
+}
+.service-process .step p {
+  font-size: 16px;
+  color: #333;
+}
+.facilities {
+  text-align: center;
+  padding: 50px 20px;
+  background-color: #e0f7fa;
+}
+.facilities h2 {
+  font-size: 24px;
+  color: #00bcd4;
+}
+.facilities .features {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px;
+}
+.facilities .feature {
+  width: 20%;
+  text-align: center;
+}
+.facilities .feature h3 {
+  font-size: 20px;
+  color: #00bcd4;
+}
+.facilities .feature p {
+  font-size: 16px;
+  color: #333;
+}
+.industrial-sector {
+  text-align: center;
+  padding: 50px 20px;
+}
+.industrial-sector h2 {
+  font-size: 24px;
+  color: #00bcd4;
+}
+.industrial-sector .sectors {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px;
+}
+.industrial-sector .sector {
+  width: 20%;
+  text-align: center;
+}
+.industrial-sector .sector h3 {
+  font-size: 20px;
+  color: #00bcd4;
+}
+.industrial-sector .sector p {
+  font-size: 16px;
+  color: #333;
+}
+.cta-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #00bcd4;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
