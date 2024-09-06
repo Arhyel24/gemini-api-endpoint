@@ -8,6 +8,10 @@ body {
   background-color: #1a1a1a;
   font-family: Arial, sans-serif;
 }
+a {
+  all: unset;
+  cursor: pointer;
+}
 .background {
   position: absolute;
   width: 100%;

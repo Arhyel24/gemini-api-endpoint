@@ -11,7 +11,7 @@ router.get("/", async (req, res) => {
     if (err) {
       console.error(err);
     }
-    res.send("Logged out successfully!");
+    res.redirect("/login");
   });
 });
 

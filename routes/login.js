@@ -11,6 +11,9 @@ const router = express.Router();
 // Endpoint for login submission
 // Login route
 router.get("/", (req, res) => {
+  if (req.session.user) {
+    res.redirect("/");
+  }
   res.render("login");
 });
 
@@ -22,14 +25,14 @@ router.post("/", async (req, res) => {
     const user = await User.findOne({ email });
 
     if (!user) {
-      return res.status(401).send({ message: "Invalid credentials" });
+      res.redirect("/login");
     }
 
     // Check if the password is correct
     const isPasswordValid = await user.comparePassword(password);
 
     if (!isPasswordValid) {
-      return res.status(401).send({ message: "Invalid credentials" });
+      res.redirect("/login");
     }
 
     // Store the user's information in the session
@@ -40,7 +43,7 @@ router.post("/", async (req, res) => {
     delete req.session.returnUrl;
     res.redirect(returnUrl || "/");
   } catch (error) {
-    res.status(500).send({ message: "Error logging in" });
+    res.redirect("/login");
   }
 });
 

@@ -8,9 +8,271 @@
     <link rel="stylesheet" href="/css/main.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+      body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #f4f4f4;
+}
+
+.chat-container {
+  width: 90%; /* Responsive width relative to viewport width */
+  max-width: 650px; /* Maximum width to maintain container size on larger screens */
+  background-color: #fff;
+  box-sizing: border-box;
+  border-radius: 10px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #333;
+  margin: 0 auto; /* Center the container horizontally */
+  padding: 10px; /* Add padding for better appearance */
+}
+
+/* Optional: Add media queries for additional responsiveness */
+@media (max-width: 768px) {
+  .chat-container {
+    width: 95%; /* Adjust width for smaller screens */
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 480px) {
+  .chat-container {
+    width: 100%; /* Full width on very small screens */
+    overflow: hidden;
+    border: none; /* Optional: Remove border on very small screens for a cleaner look */
+  }
+}
+
+.chat-box {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  max-height: 500px;
+  border-bottom: 2px solid #333;
+}
+
+.message {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.message .text {
+  max-width: 70%;
+  padding: 10px;
+  border-radius: 10px;
+  line-height: 1.4;
+}
+
+.message.user .text {
+  background-color: #007bff;
+  color: #fff;
+  align-self: flex-end;
+  margin-left: auto;
+}
+
+.message.bot .text {
+  background-color: #f1f0f0;
+  color: #333;
+}
+
+.input-box {
+  display: flex;
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+
+.input-box input {
+  flex: 1;
+  padding: 10px;
+  border: 2px solid #333;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.input-box button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.input-box button:hover {
+  background-color: #0056b3;
+}
+/* Customize the scrollbar track */
+::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+  height: 8px; /* Height of the horizontal scrollbar */
+}
+
+/* Customize the scrollbar track (part the scrollbar moves along) */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Background color of the track */
+}
+
+/* Customize the draggable part of the scrollbar */
+::-webkit-scrollbar-thumb {
+  background: #888; /* Color of the draggable part */
+  border-radius: 4px; /* Rounded corners for the scrollbar thumb */
+}
+
+/* Customize the scrollbar thumb on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Darker color on hover */
+}
+
+.mesgs {
+  overflow: hidden;
+  box-sizing: border-box; /* Include padding in the element's total width and height */
+}
+
+.msg_history {
+  overflow: auto;
+  max-height: 500px; /* Fixed maximum height for scrolling */
+  scrollbar-width: thin; /* Makes the scrollbar thin */
+  scrollbar-color: #888 #f1f1f1; /* scrollbar thumb color and track color */
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .msg_history {
+    padding: 10px 5px; /* Adjust padding for smaller screens */
+    width: 95%; /* Increase width for smaller screens */
+  }
+}
+
+/* Media query for very small screens */
+@media (max-width: 480px) {
+  .msg_history {
+    padding: 7.5px 2.5px; /* Further adjust padding for very small screens */
+    width: 100%; /* Full width on very small screens */
+    max-height: 400px; /* Optionally reduce max-height for very small screens */
+  }
+}
+
+.type_msg {
+  border-top: 1px solid #c4c4c4;
+  position: relative;
+}
+
+.input_msg_write {
+  box-sizing: border-box;
+  padding: 5px;
+}
+
+.input_msg_write input {
+  background: none;
+  border: none;
+  color: #4c4c4c;
+  font-size: 15px;
+  min-height: 48px;
+  width: 100%;
+}
+
+.msg_send_btn {
+  background: #05728f;
+  border: none;
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  font-size: 17px;
+  height: 33px;
+  position: absolute;
+  margin-right: 5px;
+  right: 0;
+  top: 11px;
+  width: 33px;
+}
+
+.msg_send_btn .fa {
+  font-size: 12px;
+}
+
+img {
+  max-width: 100%;
+}
+
+.incoming_msg_img {
+  display: inline-block;
+  width: 6%;
+  margin-top: 16px;
+}
+
+.received_msg {
+  display: inline-block;
+  /* background: #ebebeb; */
+
+  box-sizing: border-box;
+  color: #646464;
+  vertical-align: top;
+  width: 70%;
+}
+
+pre {
+  word-wrap: break-word; /* Breaks long words */
+  overflow-x: auto;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.received_withd_msg {
+  background: #ebebeb;
+  border-radius: 5px;
+  color: #646464;
+  font-size: 14px;
+  margin: 0;
+  padding: 10px;
+  width: 100%;
+}
+
+.received_withd_msg p {
+  margin: 0;
+}
+
+.time_date {
+  color: #747474;
+  display: block;
+  font-size: 12px;
+  background-color: #fff;
+  margin: 8px 0 0;
+}
+
+.sent_msg p {
+  background: #05728f;
+  border-radius: 5px;
+  color: #fff;
+  box-sizing: border-box;
+  font-size: 14px;
+  margin: 0;
+  padding: 5px 10px;
+  width: 100%;
+}
+
+.outgoing_msg {
+  overflow: hidden;
+  margin: 26px 0;
+}
+
+.sent_msg {
+  float: right;
+  width: 46%;
+}
+
+    </style>
   </head>
-  <body>
+  <body></body>
     <div class="chat-container">
+      <p><a href="/logout">Log out</a></p>
       <div class="mesgs" >
         <div class="msg_history" id="chat-box">
           
@@ -24,6 +286,134 @@
       </div>
     </div>
     </div>
-    <script src="/js/main.js"></script>
+    <script>
+    function getApiEndpoint() {
+      // Dynamically get the base URL (protocol + hostname + port)
+      const protocol = window.location.protocol;
+      const host = window.location.host;
+    
+      // Construct the API endpoint URL based on the current environment
+      const apiEndpoint = `<p>We are thrilled to present <strong>Duet AI</strong>, an innovative project developed by Yiming, Jace, and Enoch. Duet AI is built to revolutionize conversational experiences with its advanced artificial intelligence capabilities.</p>
+      <p>Explore the capabilities of Duet AI by interacting with our API endpoint:
+      <a href="${protocol}//${host}/api/chat" target="_blank">${protocol}//${host}/api/chat</a></p>`;
+    
+      return apiEndpoint;
+    }
+    
+    const checkMarks = (content) => {
+      // Regular expression to check for common Markdown symbols
+      const markdownSymbolsRegex =
+        /(\*\*|\*|__|_|`|~|\[\[|\]\]|\!\[|\]\(|\]\)|\!\[|\]\()/;
+    
+      // Check if the content contains any Markdown symbols
+      if (markdownSymbolsRegex.test(content)) {
+        // If Markdown is detected, use marked to convert Markdown to HTML
+    
+        return marked.parse(content);
+      } else {
+        // If no Markdown is detected, return content as is
+        return content;
+      }
+    };
+    
+    // Example usage in your frontend
+    const apiEndpoint = getApiEndpoint();
+    // document.getElementById("api-endpoint").innerText = apiEndpoint;
+    
+    document.addEventListener("DOMContentLoaded", () => {
+      const chatBox = document.getElementById("chat-box");
+      const userInput = document.getElementById("user-input");
+      const sendButton = document.getElementById("send-button");
+    
+      // Function to add a message to the chat
+      function addMessage(sender, text) {
+        const messageElement = document.createElement("div");
+    
+        if (sender === "user") {
+          // Outgoing message (user)
+          messageElement.classList.add("outgoing_msg");
+          messageElement.innerHTML = `
+          <div class="sent_msg">
+            <p>${text}</p>
+            <span class="time_date">${getCurrentTime()} | Today</span>
+          </div>
+        `;
+        } else if (sender === "bot") {
+          // Incoming message (bot)
+          messageElement.classList.add("incoming_msg");
+          messageElement.innerHTML = `
+          <div class="incoming_msg_img">
+            <img src="https://ptetutorials.com/images/user-profile.png" alt="bot">
+          </div>
+          <div class="received_msg">
+          <i>Duet AI</i>
+            <div class="received_withd_msg">
+              <p>${checkMarks(text)}</p>
+              
+            </div>
+            <span class="time_date">${getCurrentTime()} | Today</span>
+          </div>
+        `;
+        }
+    
+        chatBox.appendChild(messageElement);
+        chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the bottom
+      }
+    
+      // Function to get the current time in HH:MM AM/PM format
+      function getCurrentTime() {
+        const now = new Date();
+        let hours = now.getHours();
+        const minutes = now.getMinutes().toString().padStart(2, "0");
+        const ampm = hours >= 12 ? "PM" : "AM";
+        hours = hours % 12 || 12;
+        return `${hours}:${minutes} ${ampm}`;
+      }
+    
+      // // Function to add a message to the chat
+      // function addMessage(sender, text) {
+      //   const messageElement = document.createElement("div");
+      //   messageElement.classList.add("message", sender);
+      //   messageElement.innerHTML = `<div class="text">${text}</div>`;
+      //   chatBox.appendChild(messageElement);
+      //   chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the bottom
+      // }
+      addMessage("bot", apiEndpoint);
+      // Function to handle sending a message
+      function sendMessage() {
+        const text = userInput.value.trim();
+        if (text === "") return;
+    
+        addMessage("user", text);
+        userInput.value = ""; // Clear the input box
+    
+        // Send user input to Gemini API and get response
+        fetch("/api/chat", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ message: text }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            addMessage("bot", data.response);
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      }
+    
+      // Event listener for send button
+      sendButton.addEventListener("click", sendMessage);
+    
+      // Event listener for pressing Enter key
+      userInput.addEventListener("keypress", (event) => {
+        if (event.key === "Enter") {
+          sendMessage();
+        }
+      });
+    });
+    </script>
   </body>
 </html>

@@ -9,26 +9,26 @@ const __dirname = path.dirname(__filename);
 const router = express.Router();
 
 router.get("/", (req, res) => {
+  if (req.session.user) {
+    res.redirect("/");
+  }
   res.render("signup");
 });
 
 router.post("/", async (req, res) => {
   const { username, email, password } = req.body;
-  console.log("hit");
 
   try {
     // Create a new user
     const user = new User({ username, email, password });
     await user.save();
 
-    console.log(user);
-
     // Store the user's information in the session
     req.session.user = { username, email };
 
     res.redirect("/home");
   } catch (error) {
-    res.status(500).send({ message: "Error signing up" });
+    res.redirect("/signup");
   }
 });
 

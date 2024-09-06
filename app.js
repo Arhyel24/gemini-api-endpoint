@@ -19,14 +19,16 @@ dotenv.config();
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGODB_URI);
+mongoose
+  .connect(process.env.MONGODB_URI)
+  .then(console.log("DB Connected, starting app..."));
 
 const app = express();
 
 // Middleware
 app.use(errorHandler);
 app.use(cors()); // Enable CORS for all routes
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 
 // Configure session middleware
@@ -36,7 +38,7 @@ app.use(
     resave: false,
     saveUninitialized: false,
     cookie: {
-      secure: false,
+      secure: true,
       maxAge: 30 * 24 * 60 * 60 * 1000,
     },
   })
@@ -45,15 +47,15 @@ app.use(
 // Serve files from the public directory for each route
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use(
-  express.static("public", {
-    setHeaders: (res, path) => {
-      if (path.endsWith(".css")) {
-        res.setHeader("Content-Type", "text/css");
-      }
-    },
-  })
-);
+// app.use(
+//   express.static("public", {
+//     setHeaders: (res, path) => {
+//       if (path.endsWith(".css")) {
+//         res.setHeader("Content-Type", "text/css");
+//       }
+//     },
+//   })
+// );
 
 // Middleware to serve static files from the 'public' folder
 app.use(
@@ -84,11 +86,15 @@ function getMimeType(filePath) {
 }
 
 // Routes
+
 app.use("/", homeRoutes);
 app.use("/login", loginRoutes);
 app.use("/signup", signupRoutes);
 app.use("/logout", logoutRoutes);
 app.use("/api/chat", chatRoutes);
+app.use("*", (req, res) => {
+  res.render("404_notfound");
+});
 
 const PORT = process.env.PORT || 3000;
 
