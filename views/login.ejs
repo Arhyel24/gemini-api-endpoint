@@ -1,0 +1,67 @@
+<html>
+  <head>
+    <title>Login Page</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/css/login.css" />
+  </head>
+  <body>
+    <div class="background-pattern"></div>
+    <div class="login-container">
+      <h1>Welcome back!</h1>
+      <p>We're really happy to see you again!</p>
+      <input type="text" placeholder="Username" id="username" />
+      <input type="password" placeholder="Password" id="password" />
+      <button onclick="getLogin()">Log In</button>
+      <p>Or Log In With</p>
+      <div class="social-login">
+        <a href="#"><i class="fab fa-google"></i></a>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fas fa-envelope"></i></a>
+      </div>
+      <p class="signup">
+        Don't have an account? <a href="/signup">Sign Up Here</a>
+      </p>
+    </div>
+    <script>
+      function getLogin() {
+        const usernameInput = document.querySelector("#username");
+        const passwordInput = document.querySelector("#password");
+
+        const username = usernameInput.value.trim();
+        const password = passwordInput.value.trim();
+
+        if (username && password) {
+          const apiUrl = "/login";
+          const headers = {
+            "Content-Type": "application/json",
+          };
+
+          const data = {
+            username,
+            password,
+          };
+
+          fetch(apiUrl, {
+            method: "POST",
+            headers,
+            body: JSON.stringify(data),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              console.log(data);
+              // Handle login response data here
+            })
+            .catch((error) => {
+              console.error(error);
+              // Handle login error here
+            });
+        } else {
+          alert("Please enter both username and password");
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -4,7 +4,7 @@ function getApiEndpoint() {
   const host = window.location.host;
 
   // Construct the API endpoint URL based on the current environment
-  const apiEndpoint = `<p>We are thrilled to present <strong>Duet AI</strong>, an innovative project developed by Poke, James, and Enoch. Duet AI is built to revolutionize conversational experiences with its advanced artificial intelligence capabilities.</p>
+  const apiEndpoint = `<p>We are thrilled to present <strong>Duet AI</strong>, an innovative project developed by Yiming, Jace, and Enoch. Duet AI is built to revolutionize conversational experiences with its advanced artificial intelligence capabilities.</p>
   <p>Explore the capabilities of Duet AI by interacting with our API endpoint:
   <a href="${protocol}//${host}/api/chat" target="_blank">${protocol}//${host}/api/chat</a></p>`;
 
@@ -52,7 +52,6 @@ document.addEventListener("DOMContentLoaded", () => {
     } else if (sender === "bot") {
       // Incoming message (bot)
       messageElement.classList.add("incoming_msg");
-      console.log(checkMarks(text));
       messageElement.innerHTML = `
       <div class="incoming_msg_img">
         <img src="https://ptetutorials.com/images/user-profile.png" alt="bot">

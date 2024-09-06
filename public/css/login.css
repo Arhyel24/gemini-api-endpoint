@@ -1,0 +1,73 @@
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #4a4a4a;
+  font-family: Arial, sans-serif;
+}
+.login-container {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  width: 300px;
+  position: relative;
+}
+.login-container h1 {
+  color: white;
+  margin-bottom: 10px;
+}
+.login-container p {
+  color: white;
+  margin-bottom: 20px;
+}
+.login-container input[type="text"],
+.login-container input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 5px;
+}
+.login-container button {
+  width: 100%;
+  padding: 10px;
+  background-color: #28a745;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+.login-container .social-login {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+}
+.login-container .social-login a {
+  text-decoration: none;
+  color: white;
+  font-size: 24px;
+}
+.login-container .signup {
+  color: white;
+  margin-top: 10px;
+}
+.login-container .signup a {
+  color: #007bff;
+  text-decoration: none;
+}
+.background-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("https://placehold.co/800x600") no-repeat center center;
+  background-size: cover;
+  z-index: -1;
+}

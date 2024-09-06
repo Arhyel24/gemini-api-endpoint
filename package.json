@@ -1,24 +1,28 @@
 {
-  "name": "test",
+  "name": "Duet AI",
   "type": "module",
-  "version": "1.0.0",
+  "version": "3.1.7",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node app.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@google/generative-ai": "^0.17.1",
+    "argon2": "^0.41.1",
     "axios": "^1.7.7",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
     "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "joi": "^17.13.3",
     "mime": "^4.0.4",
+    "mongoose": "^8.6.1",
     "openai": "^4.57.0",
     "path": "^0.12.7"
   }

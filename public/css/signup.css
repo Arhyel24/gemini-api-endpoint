@@ -1,0 +1,94 @@
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #1a1a1a;
+  font-family: Arial, sans-serif;
+}
+.background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url("https://placehold.co/1920x1080") no-repeat center
+    center/cover;
+  z-index: -1;
+}
+.container {
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  color: white;
+  width: 300px;
+}
+.container h1 {
+  margin: 0;
+  font-size: 24px;
+}
+.container p {
+  margin: 5px 0 20px;
+  font-size: 14px;
+}
+.input-group {
+  margin-bottom: 15px;
+}
+.input-group label {
+  display: block;
+  text-align: left;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #e0e0e0;
+}
+.btn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #00cc66;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0;
+}
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #e0e0e0;
+}
+.divider:not(:empty)::before {
+  margin-right: 0.25em;
+}
+.divider:not(:empty)::after {
+  margin-left: 0.25em;
+}
+.social-buttons {
+  display: flex;
+  justify-content: space-around;
+}
+.social-buttons button {
+  background-color: #e0e0e0;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.social-buttons button i {
+  margin-right: 5px;
+}

@@ -1,0 +1,93 @@
+<html>
+  <head>
+    <title>Sign Up</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/css/signup.css" />
+  </head>
+  <body>
+    <div class="background"></div>
+    <div class="container">
+      <h1>Sign Up</h1>
+      <p>Welcome to Duet!</p>
+      <div class="input-group">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" />
+      </div>
+      <div class="input-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" />
+      </div>
+      <div class="input-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" />
+      </div>
+      <div class="input-group">
+        <label for="confirm-password">Confirm Password:</label>
+        <input type="password" id="confirm-password" name="comfirm-password" />
+      </div>
+      <button class="btn" id="btn">Sign Up</button>
+      <div class="divider">Or Sign in with</div>
+      <div class="social-buttons">
+        <button><i class="fab fa-google"></i></button>
+        <button><i class="fab fa-facebook-f"></i></button>
+        <button><i class="fas fa-envelope"></i></button>
+      </div>
+    </div>
+    <script>
+      function getSignup() {
+        const usernameInput = document.querySelector("#username");
+        const emailInput = document.querySelector("#email");
+        const passwordInput = document.querySelector("#password");
+        const confirmPasswordInput =
+          document.querySelector("#confirm-password"); // Add a confirm password input field
+
+        const username = usernameInput.value.trim();
+        const email = emailInput.value.trim();
+        const password = passwordInput.value.trim();
+        const confirmPassword = confirmPasswordInput.value.trim();
+
+        if (username && email && password && confirmPassword) {
+          if (password !== confirmPassword) {
+            alert("Passwords do not match");
+            return;
+          }
+
+          const apiUrl = "/signup";
+          const headers = {
+            "Content-Type": "application/json",
+          };
+
+          const data = {
+            username,
+            email,
+            password,
+          };
+
+          fetch(apiUrl, {
+            method: "POST",
+            headers,
+            body: JSON.stringify(data),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              console.log(data);
+              // Handle signup response data here
+            })
+            .catch((error) => {
+              console.error(error);
+              // Handle signup error here
+            });
+        } else {
+          alert("Please fill in all fields");
+        }
+      }
+
+      const signUpButton = document.querySelector("#btn");
+
+      signUpButton.addEventListener("click", getSignup);
+    </script>
+  </body>
+</html>
