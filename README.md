@@ -62,8 +62,8 @@ We would like to thank the Gemini AI team for providing the cutting-edge endpoin
 
 ## Contact
 
-For questions, feedback, or contributions, please contact us at [your-email@example.com](mailto:your-email@example.com). You can also join our community on [GitHub](https://github.com/your-repo/duet-ai) or [Twitter](https://twitter.com/duet-ai).
+For questions, feedback, or contributions, please contact us at [arhyelphilip024@gmail.com](arhyelphilip024@gmail.com). You can also join our community on [GitHub](https://github.com/arhyel24/gemini-api-endpoint) or [Twitter](https://twitter.com/arhyel24).
 
 ## Code of Conduct
 
-Duet AI is committed to maintaining a welcoming and inclusive community. Please review our [Code of Conduct](https://github.com/your-repo/duet-ai/blob/main/CODE_OF_CONDUCT.md) before contributing or participating in discussions.
+Duet AI is committed to maintaining a welcoming and inclusive community. Please review our [Code of Conduct](https://github.com/arhyel24/gemini-api-endpoint/blob/main/CODE_OF_CONDUCT.md) before contributing or participating in discussions.
