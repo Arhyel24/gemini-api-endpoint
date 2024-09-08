@@ -10,6 +10,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "engines": {
+    "node": "^20.11.1"
+  },
   "dependencies": {
     "@google/generative-ai": "^0.17.1",
     "argon2": "^0.41.1",
