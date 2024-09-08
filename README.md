@@ -1,5 +1,4 @@
 # Duet AI README
--------------------
 
 ## Project Overview
 -------------------
